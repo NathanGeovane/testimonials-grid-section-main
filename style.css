@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "Barlow Semi Condensed";
+  src: url("/fonts/barlowsemicondensed-medium-webfont.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Barlow Semi Condensed";
+  src: url("/fonts/barlowsemicondensed-semibold-webfont.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,21 +26,6 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
-}
-
-/*
-  Typographic tweaks!
-  Add accessible line-height
-  Improve text rendering
-*/
-body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  background-color: ;
-  font-family: ;
-  font-size: ;
-
-  font-weight: ;
 }
 
 /*
@@ -65,4 +64,160 @@ h6 {
 }
 
 :root {
+  --fs-main: 1.3rem;
+  --fw-main: 500;
+  --fw-bold: 600;
+  --white: hsl(0, 0%, 100%);
+  --bg-clr: hsl(210, 46%, 95%);
+  --clr-neutral: hsl(0, 0%, 81%);
+
+  --clr-primary-400: hsl(263, 55%, 52%);
+  --clr-primary-600: hsl(217, 19%, 35%);
+  --clr-primary-800: hsl(219, 29%, 14%);
+}
+
+/*
+  Typographic tweaks!
+  Add accessible line-height
+  Improve text rendering
+*/
+body {
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--bg-clr);
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-size: var(--fs-main);
+  font-weight: var(--fw-main);
+  padding: 1.5rem;
+}
+
+.testimonials {
+  display: grid;
+  row-gap: 2.4rem;
+  margin-block-end: 1.5rem;
+}
+
+.testimonial {
+  border-radius: 0.8rem;
+  background-color: var(--white);
+  padding: 4rem;
+  display: grid;
+  row-gap: 2rem;
+  color: white;
+}
+.testimonial:nth-child(1) {
+  background-color: var(--clr-primary-400);
+  background-image: url(images/bg-pattern-quotation.svg);
+  background-repeat: no-repeat;
+  background-position-x: 80%;
+}
+.testimonial:nth-child(2) {
+  background-color: var(--clr-primary-600);
+}
+
+.testimonial:nth-child(4) {
+  background-color: var(--clr-primary-800);
+}
+
+.testimonial__person {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  column-gap: 1.2rem;
+}
+
+.person__info {
+  color: var(--white);
+  line-height: 1;
+}
+.person__info span {
+  display: block;
+  font-size: 1.1rem;
+  opacity: 50%;
+  margin-block-start: 0.2rem;
+}
+
+.person__img {
+  height: 3.2rem;
+  width: 3.2rem;
+  border-radius: 50%;
+}
+.testimonial:nth-child(1) .person__img {
+  border: 2px solid #a775f1;
+}
+.testimonial:nth-child(4) .person__img {
+  border: 2px solid var(--clr-primary-400);
+}
+
+.testimonial__title {
+  line-height: 1;
+  font-weight: var(--fw-bold);
+  font-size: 2rem;
+  color: var(--white);
+}
+
+.testimonial__description {
+  opacity: 70%;
+}
+
+.testimonial:nth-child(3) .person__info,
+.testimonial:nth-child(5) .person__info {
+  color: var(--clr-primary-600);
+  font-weight: var(--fw-bold);
+}
+.testimonial:nth-child(3) .testimonial__description,
+.testimonial:nth-child(5) .testimonial__description {
+  color: var(--clr-primary-600);
+}
+.testimonial:nth-child(3) .testimonial__title,
+.testimonial:nth-child(5) .testimonial__title {
+  color: var(--clr-primary-600);
+  font-weight: var(--fw-bold);
+}
+
+@media (min-width: 43.75em) {
+  main {
+    display: grid;
+    justify-content: center;
+  }
+
+  .testimonials {
+    grid-template-columns: repeat(2, minmax(255px, 1fr));
+    column-gap: 5rem;
+  }
+  .testimonial:nth-child(2) {
+    align-self: center;
+  }
+  .testimonial:nth-child(3) {
+    align-self: center;
+  }
+}
+@media (min-width: 68.75em) {
+  main {
+    display: grid;
+    justify-content: center;
+  }
+
+  .testimonials {
+    grid-template-columns: repeat(4, 255px);
+    grid-template-areas:
+      "card1 card1 card2 card5"
+      "card3 card4 card4 card5";
+    gap: 2.5rem;
+  }
+  .testimonial:nth-child(1) {
+    grid-area: card1;
+  }
+  .testimonial:nth-child(2) {
+    grid-area: card2;
+  }
+  .testimonial:nth-child(3) {
+    grid-area: card3;
+  }
+  .testimonial:nth-child(4) {
+    grid-area: card4;
+  }
+  .testimonial:nth-child(5) {
+    grid-area: card5;
+  }
 }
