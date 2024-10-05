@@ -90,6 +90,12 @@ body {
   font-weight: var(--fw-main);
   padding: 1.5rem;
   min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+main {
+  align-self: end;
 }
 
 .testimonials {
@@ -195,6 +201,7 @@ body {
       "card3 card5"
       "card4 card4";
     gap: 2.5rem;
+    padding: 3rem;
   }
   .testimonial {
     padding: 3rem;
