@@ -89,11 +89,18 @@ body {
   font-size: var(--fs-main);
   font-weight: var(--fw-main);
   padding: 1.5rem;
+  min-height: 100vh;
 }
 
 .testimonials {
   display: grid;
-  row-gap: 2.4rem;
+  grid-template-areas:
+    "card1"
+    "card2"
+    "card3"
+    "card4"
+    "card5";
+  gap: 2.4rem;
   margin-block-end: 1.5rem;
 }
 
@@ -178,28 +185,45 @@ body {
 @media (min-width: 43.75em) {
   main {
     display: grid;
-    justify-content: center;
+    place-items: center;
   }
 
   .testimonials {
-    grid-template-columns: repeat(2, minmax(255px, 1fr));
-    column-gap: 5rem;
+    grid-template-areas:
+      "card1 card1"
+      "card2 card5"
+      "card3 card5"
+      "card4 card4";
+    gap: 2.5rem;
+  }
+  .testimonial {
+    padding: 3rem;
+  }
+
+  .testimonial:nth-child(1) {
+    grid-area: card1;
   }
   .testimonial:nth-child(2) {
-    align-self: center;
+    grid-area: card2;
   }
   .testimonial:nth-child(3) {
-    align-self: center;
+    grid-area: card3;
+  }
+  .testimonial:nth-child(4) {
+    grid-area: card4;
+  }
+  .testimonial:nth-child(5) {
+    grid-area: card5;
   }
 }
-@media (min-width: 68.75em) {
+@media (min-width: 56.25em) {
   main {
     display: grid;
-    justify-content: center;
   }
 
   .testimonials {
-    grid-template-columns: repeat(4, 255px);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-template-areas:
       "card1 card1 card2 card5"
       "card3 card4 card4 card5";
